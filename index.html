@@ -4,15 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#050505" />
-<title>Jordan Avery — Research · Advocacy · Systems · Writing</title>
-<meta name="description" content="Sample portfolio site — placeholder copy used for design preview only. Replace with real biography text before publishing." />
-<meta name="author" content="Jordan Avery" />
+<title>Nupur Kumar — Research · Advocacy · Systems · Writing</title>
+<meta name="description" content="Chapman University student exploring law, technology, public systems, and advocacy through research, competition, professional work, and interdisciplinary projects." />
+<meta name="author" content="Nupur Kumar" />
 <meta property="og:type" content="profile" />
-<meta property="og:title" content="Jordan Avery — Research · Advocacy · Systems · Writing" />
-<meta property="og:description" content="Sample portfolio site — placeholder copy used for design preview only." />
+<meta property="og:title" content="Nupur Kumar — Research · Advocacy · Systems · Writing" />
+<meta property="og:description" content="Chapman University student exploring law, technology, public systems, and advocacy." />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="/" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050505'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='16' fill='%23ffffff'%3EJ%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050505'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='16' fill='%23ffffff'%3EN%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -565,6 +565,189 @@ h2.section-title .accent {
   transform: rotate(-45deg);
 }
 @keyframes arrowSlide { 50% { transform: translateY(4px); } }
+
+/* ════════════════════════════════════════
+   PAPERS — vertical stack, scroll-rotates in 3D
+   ════════════════════════════════════════ */
+.papers {
+  position: relative;
+  padding: clamp(80px, 12vw, 140px) var(--gutter) clamp(80px, 12vw, 140px);
+  max-width: var(--max);
+  margin: 0 auto;
+  perspective: 1500px;
+  perspective-origin: 50% 50%;
+}
+.papers-head {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+.papers-head .eyebrow { margin-bottom: 24px; }
+.papers-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+.papers-head h2 em { font-style: italic; color: var(--ink-3); font-weight: 400; }
+.papers-head p {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--ink-3);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.paper-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18vh;
+  padding: 12vh 0 16vh;
+  transform-style: preserve-3d;
+}
+
+.paper-3d {
+  width: min(520px, 88vw);
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  padding: clamp(28px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  box-shadow:
+    0 60px 100px -40px rgba(0,0,0,.75),
+    0 28px 50px -20px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  font-family: var(--sans);
+}
+
+/* Paper variants */
+.paper-3d.cream {
+  background: linear-gradient(180deg, #f5f1e8 0%, #ebe4d2 100%);
+  color: #1a1a1a;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.paper-3d.dark {
+  background: linear-gradient(180deg, #1a1c1d 0%, #131415 100%);
+  color: #f5f1e8;
+  border: 1px solid var(--line-2);
+}
+.paper-3d.warn {
+  background: linear-gradient(180deg, #ff5a4a 0%, #e23d2d 100%);
+  color: #ffffff;
+  border: 1px solid rgba(0,0,0,.08);
+}
+.paper-3d.amber {
+  background: linear-gradient(180deg, #d4a574 0%, #b88550 100%);
+  color: #1a1a1a;
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+/* Paper texture overlay (subtle grain) */
+.paper-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .08;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.paper-3d.dark::before { mix-blend-mode: overlay; opacity: .12; }
+
+.paper-3d .p-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+.paper-3d .p-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px 5px 9px;
+  border-radius: var(--r-pill);
+  background: rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.1);
+  color: inherit;
+}
+.paper-3d.dark .p-tag {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+}
+.paper-3d.warn .p-tag,
+.paper-3d.amber .p-tag {
+  background: rgba(0,0,0,.12);
+  border-color: rgba(0,0,0,.18);
+}
+.paper-3d .p-tag::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; opacity: .55;
+}
+.paper-3d .p-num {
+  font-size: 10px;
+  opacity: .55;
+}
+.paper-3d .p-mid {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.paper-3d .p-title {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+.paper-3d .p-title em { font-style: italic; opacity: .65; font-weight: 400; }
+.paper-3d .p-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+  position: relative; z-index: 1;
+}
+.paper-3d .p-meta {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: .72;
+  max-width: 70%;
+}
+.paper-3d .p-stamp {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  opacity: .55;
+  white-space: nowrap;
+  align-self: flex-end;
+}
+
+@media (max-width: 600px) {
+  .paper-stack { gap: 14vh; padding: 8vh 0 12vh; }
+  .paper-3d { aspect-ratio: 3.6 / 5; }
+  .paper-3d .p-title { font-size: 22px; }
+  .paper-3d .p-meta { font-size: 12px; }
+}
 
 /* ════════════════════════════════════════
    ABOUT
@@ -1340,17 +1523,17 @@ h2.section-title .accent {
 <!-- ─── NAV ─── -->
 <header class="nav" role="banner">
   <div class="nav-inner" id="navInner">
-    <a class="nav-brand" href="#home" aria-label="Jordan Avery — Home">
+    <a class="nav-brand" href="#home" aria-label="Nupur Kumar — Home">
       <span class="dot"></span>
-      <span>Jordan Avery</span>
+      <span>Nupur Kumar</span>
     </a>
     <div class="nav-links" role="navigation" aria-label="Primary">
+      <a href="#papers" data-nav="papers">Work</a>
       <a href="#about" data-nav="about">About</a>
       <a href="#education" data-nav="education">Education</a>
       <a href="#experience" data-nav="experience">Experience</a>
       <a href="#writing" data-nav="writing">Writing</a>
       <a href="#advocacy" data-nav="advocacy">Advocacy</a>
-      <a href="#interests" data-nav="interests">Interests</a>
       <a href="#honors" data-nav="honors">Honors</a>
     </div>
     <a class="nav-cta" href="#contact">Contact <span class="arr">→</span></a>
@@ -1383,7 +1566,7 @@ h2.section-title .accent {
     <div class="hero-bg" aria-hidden="true">
       <div class="paper-card pc-1" data-depth="0.6">
         <span class="pc-tag">2025 · Article</span>
-        <span class="pc-body">Sample Headline — Placeholder Subtitle for Demo Layout</span>
+        <span class="pc-body">Beyond the Warrant — Privacy in the Age of Digital Searches</span>
       </div>
       <div class="paper-card pc-2 cream" data-depth="1.2">
         <span class="pc-tag">Mock Trial</span>
@@ -1391,11 +1574,11 @@ h2.section-title .accent {
       </div>
       <div class="paper-card pc-3 dark" data-depth="0.4">
         <span class="pc-tag">Certificate</span>
-        <span class="pc-body">Advanced Paralegal · Sample Institute of Legal Studies</span>
+        <span class="pc-body">Advanced Paralegal · Center for Legal Studies</span>
       </div>
       <div class="paper-card pc-4" data-depth="0.8">
         <span class="pc-tag">2026 · Article</span>
-        <span class="pc-body">Sample Headline Two — Demo Subtitle for Layout Preview</span>
+        <span class="pc-body">Echoes After Death — The Right to Be Forgotten</span>
       </div>
       <div class="paper-card pc-5 warn" data-depth="1.6">
         <span class="pc-tag">GPA</span>
@@ -1403,7 +1586,7 @@ h2.section-title .accent {
       </div>
       <div class="paper-card pc-6 dark" data-depth="0.2">
         <span class="pc-tag">Honor</span>
-        <span class="pc-body">Sample Foundation Scholarship · 2024</span>
+        <span class="pc-body">Thurgood Marshall Scholarship · 2024</span>
       </div>
     </div>
 
@@ -1411,14 +1594,14 @@ h2.section-title .accent {
       <div class="hero-meta reveal">
         <span class="live">Available · Spring 2026</span>
         <span class="sep">·</span>
-        <span>Hartford, Connecticut</span>
+        <span>Orange, California</span>
         <span class="sep">·</span>
-        <span>Westfield '28</span>
+        <span>Chapman '28</span>
       </div>
 
       <h1 class="hero-title reveal delay-1">
-        Jordan<br>
-        <em>Avery.</em>
+        Nupur<br>
+        <em>Kumar.</em>
       </h1>
 
       <div class="hero-tagline reveal delay-2">
@@ -1429,7 +1612,7 @@ h2.section-title .accent {
       </div>
 
       <p class="hero-intro reveal delay-3">
-        Lorem ipsum placeholder text used for layout preview. Sample bio sentence describing a student exploring law, technology, public systems, and advocacy through research, competition, and interdisciplinary work.
+        Chapman University student exploring law, technology, public systems, and advocacy through research, competition, professional work, and interdisciplinary projects.
       </p>
 
       <div class="hero-actions reveal delay-4">
@@ -1444,15 +1627,110 @@ h2.section-title .accent {
     </div>
   </section>
 
+  <!-- ─── PAPERS — scroll-rotate showcase ─── -->
+  <section class="papers" id="papers" aria-label="Selected work">
+    <div class="papers-head">
+      <span class="eyebrow"><span class="num">▲</span>Selected Work</span>
+      <h2>Six papers, <em>one body of work.</em></h2>
+      <p>Scroll through. Each one rotates as it passes — articles, certifications, honors, and the studies that hold them together.</p>
+    </div>
+
+    <div class="paper-stack" id="paperStack">
+      <article class="paper-3d cream" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Article · Law Review</span>
+          <span class="p-num">01 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Beyond the Warrant: <em>Protecting Privacy in the Age of Digital Searches.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">An examination of Fourth Amendment protections in the digital era.</p>
+          <span class="p-stamp">2025</span>
+        </div>
+      </article>
+
+      <article class="paper-3d dark" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Certification · BARBRI</span>
+          <span class="p-num">02 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Advanced Paralegal Certificate <em>— Center for Legal Studies.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">Immigration · Constitutional · Criminal Procedure · Family Law · Legal Research.</p>
+          <span class="p-stamp">2024 → 2025</span>
+        </div>
+      </article>
+
+      <article class="paper-3d cream" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Article · Law Review</span>
+          <span class="p-num">03 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Echoes After Death: <em>The Moral and Legal Boundaries of the Right to Be Forgotten.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">Posthumous data rights, digital legacy control, privacy after death.</p>
+          <span class="p-stamp">2026</span>
+        </div>
+      </article>
+
+      <article class="paper-3d warn" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Competition · Mock Trial</span>
+          <span class="p-num">04 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Blue Ribbon Awards Nominee <em>— Riverside County Mock Trial.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">Direct &amp; cross examination · objections · case theory · trial advocacy.</p>
+          <span class="p-stamp">April 2024</span>
+        </div>
+      </article>
+
+      <article class="paper-3d amber" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Honor · Scholarship</span>
+          <span class="p-num">05 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Thurgood Marshall Scholarship <em>for leadership &amp; merit.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">Awarded for leadership, financial need, and academic achievement.</p>
+          <span class="p-stamp">August 2024</span>
+        </div>
+      </article>
+
+      <article class="paper-3d dark" data-paper>
+        <div class="p-top">
+          <span class="p-tag">Studies · Chapman</span>
+          <span class="p-num">06 / 06</span>
+        </div>
+        <div class="p-mid">
+          <h3 class="p-title">Triple Major <em>— Political Science · Sociology · Legal Studies.</em></h3>
+        </div>
+        <div class="p-bot">
+          <p class="p-meta">Class of 2028 · 4.00 GPA · Wilkinson College of Arts, Humanities and Social Sciences.</p>
+          <span class="p-stamp">'24 → '28</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- ─── ABOUT ─── -->
   <section class="section" id="about">
     <span class="eyebrow reveal"><span class="num">01</span>About</span>
     <div class="about-grid">
       <div class="left reveal delay-1">
         <h2 class="section-title">A student at <em>the seam</em> between law, tech, &amp; public life.</h2>
-        <p>Placeholder paragraph one. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is sample biographical copy describing a student pursuing triple majors in Political Science, Sociology, and Legal Studies, with interests at the intersection of law, technology, advocacy, institutional systems, and public discourse.</p>
-        <p>Placeholder paragraph two. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Demo text covering work in constitutional law, digital privacy, posthumous data rights, women's rights, and interdisciplinary legal research, alongside interests in systems thinking and creative problem-solving.</p>
-        <p>Placeholder paragraph three. Sample sentence describing current roles — a legal assistant position, a writer role at the Undergraduate Law Review, and involvement in Mock Trial, Speech &amp; Debate, and the campus pre-law fraternity.</p>
+        <p>I'm a student at Chapman University pursuing triple majors in Political Science, Sociology, and Legal Studies. My interests sit at the intersection of law, technology, advocacy, institutional systems, and public discourse. Through legal writing, mock trial, debate, and professional legal experience, I explore how communication, governance, and emerging technologies shape modern legal and social structures.</p>
+        <p>My work spans constitutional law, digital privacy, posthumous data rights, women's rights, and interdisciplinary legal research, alongside interests in systems thinking, public-facing communication, and creative problem-solving. Beyond academics, I'm deeply interested in the role of advocacy and structured argumentation — whether in courtroom simulations, legal analysis, or collaborative projects.</p>
+        <p>Currently, I serve as a Legal Assistant at Parikh &amp; Prasad PC and contribute as a writer for Chapman University's Undergraduate Law Review. I am also actively involved in Mock Trial, Speech &amp; Debate, and Kappa Alpha Pi Pre-Law Fraternity.</p>
       </div>
       <div class="right reveal delay-2">
         <div class="about-pull">
@@ -1470,12 +1748,12 @@ h2.section-title .accent {
   <section class="section" id="education">
     <span class="eyebrow reveal"><span class="num">02</span>Education</span>
     <h2 class="section-title reveal delay-1">Three majors, <em>one through-line.</em></h2>
-    <p class="section-lead reveal delay-2">Hartwell College of Arts, Humanities and Social Sciences — three Bachelor of Arts degrees pursued in parallel.</p>
+    <p class="section-lead reveal delay-2">Wilkinson College of Arts, Humanities and Social Sciences — three Bachelor of Arts degrees pursued in parallel.</p>
 
     <div class="edu-card reveal delay-3">
       <div>
-        <div class="edu-school">Westfield University</div>
-        <div class="edu-loc"><span>Hartford, Connecticut</span><span class="dot"></span><span>Hartwell College</span></div>
+        <div class="edu-school">Chapman University</div>
+        <div class="edu-loc"><span>Orange, California</span><span class="dot"></span><span>Wilkinson College</span></div>
 
         <div class="edu-degrees">
           <div class="deg"><span class="badge">B.A.</span><span>Political Science</span></div>
@@ -1494,7 +1772,7 @@ h2.section-title .accent {
           </div>
           <div class="item">
             <span class="k">College</span>
-            <span class="v" style="font-size:15px; font-family:var(--sans); font-weight:500;">Hartwell</span>
+            <span class="v" style="font-size:15px; font-family:var(--sans); font-weight:500;">Wilkinson</span>
           </div>
         </div>
       </div>
@@ -1529,8 +1807,8 @@ h2.section-title .accent {
         </div>
         <div>
           <h3 class="exp-role">Legal Assistant</h3>
-          <div class="exp-org">Bennett &amp; Cole LLP · Stamford, CT</div>
-          <p class="exp-desc">Placeholder description. Lorem ipsum dolor sit amet — sample copy outlining responsibilities in case preparation, documentation workflows, exhibit organization, deadline tracking, and client communication. Replace with actual role details before publishing.</p>
+          <div class="exp-org">Parikh &amp; Prasad PC · Chino Hills, CA</div>
+          <p class="exp-desc">Support immigration-focused legal operations through case preparation, documentation workflows, exhibit organization, deadline tracking, and client communication. Assist attorneys with legal documentation, case materials, and administrative coordination while working across evolving immigration matters and procedural processes.</p>
         </div>
       </article>
 
@@ -1540,8 +1818,8 @@ h2.section-title .accent {
         </div>
         <div>
           <h3 class="exp-role">Administrative Assistant</h3>
-          <div class="exp-org">Office of Legal Affairs, Westfield University · Hartford, CT</div>
-          <p class="exp-desc">Placeholder description. Sample copy outlining institutional legal support work — contract review assistance, correspondence management, document organization, and administrative coordination. Demo text only; replace before publishing.</p>
+          <div class="exp-org">Office of Legal Affairs, Chapman University · Orange, CA</div>
+          <p class="exp-desc">Supported institutional legal operations through contract review assistance, correspondence management, document organization, and administrative coordination. Helped streamline communication workflows while maintaining accuracy and professionalism in legal documentation processes.</p>
         </div>
       </article>
 
@@ -1552,8 +1830,8 @@ h2.section-title .accent {
         </div>
         <div>
           <h3 class="exp-role">Writer</h3>
-          <div class="exp-org">Undergraduate Law Review, Westfield University</div>
-          <p class="exp-desc">Placeholder description. Sample copy describing scholarly writing focused on constitutional protections, digital privacy, technology, and evolving legal frameworks.</p>
+          <div class="exp-org">Undergraduate Law Review, Chapman University</div>
+          <p class="exp-desc">Research and author scholarly writing focused on constitutional protections, digital privacy, technology, and evolving legal frameworks.</p>
         </div>
       </article>
     </div>
@@ -1568,20 +1846,20 @@ h2.section-title .accent {
     <div class="writing-grid">
       <article class="write-card reveal" data-tilt>
         <span class="yr-badge">2025 · Article 01</span>
-        <h3>Sample Article Title: <em>Placeholder Subtitle for Demo Layout Preview</em></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder abstract describing a sample article on Fourth Amendment protections in the digital era and how technology challenges traditional privacy frameworks.</p>
+        <h3>Beyond the Warrant: <em>Protecting Privacy in the Age of Digital Searches</em></h3>
+        <p>An examination of Fourth Amendment protections in the digital era, focusing on how technological developments challenge traditional understandings of privacy, surveillance, and constitutional safeguards.</p>
         <div class="meta">
-          <span class="pub">Sample Undergraduate Law Review</span>
+          <span class="pub">Chapman Undergraduate Law Review</span>
           <span>Scholarly</span>
         </div>
       </article>
 
       <article class="write-card reveal delay-1" data-tilt>
         <span class="yr-badge">2026 · Article 02</span>
-        <h3>Sample Article Title Two: <em>Placeholder Subtitle for the Second Demo Card</em></h3>
-        <p>Lorem ipsum dolor sit amet. Placeholder abstract for a sample research article exploring posthumous data rights, digital legacy control, and ethical questions surrounding privacy after death.</p>
+        <h3>Echoes After Death: <em>The Moral and Legal Boundaries of the Right to Be Forgotten</em></h3>
+        <p>A research article exploring posthumous data rights, digital legacy control, and the ethical and legal questions surrounding privacy after death.</p>
         <div class="meta">
-          <span class="pub">Sample Undergraduate Law Review</span>
+          <span class="pub">Chapman Undergraduate Law Review</span>
           <span>Scholarly</span>
         </div>
       </article>
@@ -1592,23 +1870,23 @@ h2.section-title .accent {
   <section class="section" id="advocacy">
     <span class="eyebrow reveal"><span class="num">05</span>Advocacy &amp; Leadership</span>
     <h2 class="section-title reveal delay-1">Argument as <em>discipline.</em></h2>
-    <p class="section-lead reveal delay-2">Three communities at Westfield — each one a different way of practicing how to think on your feet.</p>
+    <p class="section-lead reveal delay-2">Three communities at Chapman — each one a different way of practicing how to think on your feet.</p>
 
     <div class="adv-grid">
       <article class="adv-card reveal" data-tilt>
         <div class="icon">⚖</div>
         <h4>Mock Trial</h4>
-        <p>Placeholder copy. Sample description of work in courtroom simulations — direct examination, cross-examination, objections, witness preparation, case theory development, and trial advocacy.</p>
+        <p>Active participant in courtroom simulations involving direct examination, cross-examination, objections, witness preparation, case theory development, and trial advocacy.</p>
       </article>
       <article class="adv-card reveal delay-1" data-tilt>
         <div class="icon">∿</div>
         <h4>Speech &amp; Debate</h4>
-        <p>Placeholder copy. Sample description of engagement in structured argumentation, public speaking, and analytical communication through competitive speech and debate.</p>
+        <p>Engage in structured argumentation, public speaking, and analytical communication through competitive speech and debate activities.</p>
       </article>
       <article class="adv-card reveal delay-2" data-tilt>
         <div class="icon">KAπ</div>
-        <h4>Pre-Law Fraternity</h4>
-        <p>Placeholder copy. Sample description of professional development, networking, leadership, and pre-law community engagement on campus.</p>
+        <h4>Kappa Alpha Pi</h4>
+        <p>Participate in professional development, networking, leadership, and pre-law community engagement through Chapman's Pre-Law Fraternity.</p>
       </article>
     </div>
   </section>
@@ -1660,11 +1938,11 @@ h2.section-title .accent {
     <h2 class="section-title reveal delay-1">A short list.</h2>
 
     <div class="honors-grid" style="margin-top:32px">
-      <div class="honor reveal"><span class="number">01</span><span class="label">Sample Provost's Scholarship</span></div>
-      <div class="honor reveal delay-1"><span class="number">02</span><span class="label">Sample Foundation Scholarship</span></div>
+      <div class="honor reveal"><span class="number">01</span><span class="label">Provost's Scholarship</span></div>
+      <div class="honor reveal delay-1"><span class="number">02</span><span class="label">Thurgood Marshall Scholarship</span></div>
       <div class="honor reveal delay-2"><span class="number">03</span><span class="label">Provost's List</span></div>
       <div class="honor reveal delay-3"><span class="number">04</span><span class="label">Dean's List</span></div>
-      <div class="honor full reveal delay-4"><span class="number">05</span><span class="label">Sample Award Nominee — Greater Hartford County Mock Trial Competition</span></div>
+      <div class="honor full reveal delay-4"><span class="number">05</span><span class="label">Blue Ribbon Awards Nominee — Riverside County Mock Trial Competition</span></div>
     </div>
   </section>
 
@@ -1678,8 +1956,8 @@ h2.section-title .accent {
       <div class="cert reveal">
         <div>
           <div class="name">Paralegal Certificate Course</div>
-          <div class="issuer">Sample Institute of Legal Studies</div>
-          <div class="desc">Placeholder description. Sample coursework summary — legal writing, litigation support, legal research, procedural law, and legal documentation.</div>
+          <div class="issuer">Center for Legal Studies by BARBRI</div>
+          <div class="desc">Focused on legal writing, litigation support, legal research, procedural law, and legal documentation.</div>
         </div>
         <span class="badge">Completed</span>
       </div>
@@ -1687,8 +1965,8 @@ h2.section-title .accent {
       <div class="cert reveal delay-1">
         <div>
           <div class="name">Advanced Paralegal Certificate Course</div>
-          <div class="issuer">Sample Institute of Legal Studies</div>
-          <div class="desc">Placeholder description. Sample advanced coursework summary — Immigration Law, Constitutional Law, Criminal Procedure, Family Law, Legal Research, Civil Liberties, and Criminal Law.</div>
+          <div class="issuer">Center for Legal Studies by BARBRI</div>
+          <div class="desc">Advanced coursework in Immigration Law, Constitutional Law, Criminal Procedure, Family Law, Legal Research, Civil Liberties, and Criminal Law.</div>
         </div>
         <span class="badge">Completed</span>
       </div>
@@ -1700,7 +1978,7 @@ h2.section-title .accent {
     <span class="eyebrow reveal"><span class="num">09</span>Current</span>
     <div class="current-block reveal delay-1">
       <span class="live-tag">Reading now</span>
-      <p>Placeholder paragraph. Lorem ipsum dolor sit amet — sample text describing current research interests across digital privacy, constitutional protections, institutional systems, legal technology, public discourse, and the evolving relationship between governance and technology.</p>
+      <p>Currently interested in questions surrounding digital privacy, constitutional protections, women's rights, institutional systems, legal technology, public discourse, posthumous data rights, and the evolving relationship between governance and technology.</p>
     </div>
   </section>
 
@@ -1709,17 +1987,17 @@ h2.section-title .accent {
     <div class="contact-block reveal">
       <span class="contact-eyebrow">Get in touch</span>
       <h2 class="contact-headline">If anything here resonated, <em>email is the best way in.</em></h2>
-      <p class="contact-sub">Placeholder copy. Open to research collaborations, internships, and conversations about law, advocacy, and writing.</p>
+      <p class="contact-sub">Open to research collaborations, internships, and conversations about the law, advocacy, and the writing.</p>
       <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:hello@example.com?subject=Hello%20Jordan">Email Jordan <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-primary" href="mailto:nupur@chapman.edu?subject=Hello%20Nupur">Email Nupur <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/nupur-kumar31" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <div class="contact-foot">
-        <a href="mailto:hello@example.com">hello@example.com</a>
+        <a href="mailto:nupur@chapman.edu">nupur@chapman.edu</a>
         <span class="sep">·</span>
-        <a href="tel:+15551234567">(555) 123-4567</a>
+        <a href="tel:+19516346412">(951) 634-6412</a>
         <span class="sep">·</span>
-        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/nupur-kumar31" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
@@ -1728,7 +2006,7 @@ h2.section-title .accent {
 
 <footer class="footer">
   <div class="footer-inner">
-    <div>© 2026 Jordan Avery</div>
+    <div>© 2026 Nupur Kumar</div>
     <div class="right">
       <span>Set in Space Grotesk · Inter</span>
       <span>·</span>
@@ -1759,7 +2037,7 @@ h2.section-title .accent {
 
   // ── Active nav link tracking ──────────────────────
   const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
-  const sections = ['about','education','experience','writing','advocacy','interests','honors']
+  const sections = ['papers','about','education','experience','writing','advocacy','interests','honors']
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
@@ -1818,6 +2096,54 @@ h2.section-title .accent {
     }
   });
 
+  // ── 3D scroll-rotating papers ─────────────────────
+  // Ported "feel" from FlyingPosters: as a paper passes the
+  // viewport center, it rotates around its X axis from
+  // tilted-toward-viewer (below) → flat (center) → tilted-
+  // away (above), with qinticInOut easing.
+  const papers = document.querySelectorAll('[data-paper]');
+  function qinticInOut(t) {
+    return t < 0.5
+      ? 16 * Math.pow(t, 5)
+      : -0.5 * Math.abs(Math.pow(2 * t - 2, 5)) + 1;
+  }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function updatePapers() {
+    if (!papers.length || reduceMotion) return;
+    const vh = window.innerHeight;
+    const vCenter = vh / 2;
+    for (let i = 0; i < papers.length; i++) {
+      const p = papers[i];
+      const r = p.getBoundingClientRect();
+      // Skip cards far outside viewport for perf
+      if (r.bottom < -vh * 0.5 || r.top > vh * 1.5) {
+        p.style.transform = '';
+        p.style.opacity = '';
+        p.style.filter = '';
+        continue;
+      }
+      const cardCenter = r.top + r.height / 2;
+      // progress: -1 when card is at viewport top, 0 at center, +1 at bottom
+      const raw = clamp((cardCenter - vCenter) / (vh * 0.6), -1.2, 1.2);
+      const sign = Math.sign(raw);
+      const eased = qinticInOut(Math.min(Math.abs(raw), 1));
+      const rotX = -sign * eased * 55;            // up to 55° tilt
+      const rotZ =  sign * eased * 1.4;           // tiny rotation for life
+      const tz   = -eased * 180;                  // sink back into space
+      const sc   = 1 - eased * 0.06;              // tiny scale-down at edges
+      const op   = 1 - eased * eased * 0.55;      // fade at extremes
+      const blur = eased > 0.7 ? (eased - 0.7) * 6 : 0;
+      p.style.transform =
+        'translateZ(' + tz.toFixed(1) + 'px) ' +
+        'rotateX(' + rotX.toFixed(2) + 'deg) ' +
+        'rotateZ(' + rotZ.toFixed(2) + 'deg) ' +
+        'scale(' + sc.toFixed(3) + ')';
+      p.style.opacity = op.toFixed(3);
+      p.style.filter = blur > 0.05 ? 'blur(' + blur.toFixed(2) + 'px)' : '';
+    }
+  }
+
   // ── Animation loop ────────────────────────────────
   let lastY = -1;
   function loop() {
@@ -1839,6 +2165,7 @@ h2.section-title .accent {
     if (scrollY !== lastY) {
       lastY = scrollY;
       updateActiveNav();
+      updatePapers();
     }
 
     requestAnimationFrame(loop);
@@ -1847,6 +2174,8 @@ h2.section-title .accent {
   if (!reduceMotion) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updatePapers, { passive: true });
+    updatePapers();
     loop();
   } else {
     updateActiveNav();
